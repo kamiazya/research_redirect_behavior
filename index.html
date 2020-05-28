@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button onclick="callAPI(300)">300</button>
+  <button onclick="callAPI(301)">301</button>
+  <button onclick="callAPI(302)">302</button>
+  <button onclick="callAPI(303)">303</button>
+  <button onclick="callAPI(304)">304</button>
+  <button onclick="callAPI(305)">305</button>
+  <button onclick="callAPI(307)">307</button>
+  <button onclick="callAPI(308)">308</button>
+  <script>
+
+    function callAPI(status) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        console.log(status, 'xhr.readyState', xhr.readyState);
+        console.log(status, 'xhr.status', xhr.status);
+        console.log(status, 'xhr.getAllResponseHeaders', xhr.getAllResponseHeaders());
+        console.log(status, 'xhr.responseText', xhr.responseText);
+        console.log(status, 'this.responseURL', this.responseURL);
+        console.log('this', this);
+      }
+      xhr.open('GET', `/${status}`);
+      xhr.send(null);
+
+    }
+  </script>
+</body>
+</html>
